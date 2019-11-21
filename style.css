@@ -1,3 +1,7 @@
+body {
+    padding: 20px;
+}
+
 #browser-head {
   background-color: rgba(39, 40, 74, 0.8);
   border-radius: 10px 10px 0 0;
