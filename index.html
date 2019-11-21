@@ -11,8 +11,8 @@
                 </div>
                 <div id="browser-body">
                     <div id="browser-tools">
-                        <input disabled id="browser-direct-input" type="text" placeholder="Enter an address [IP:Port]" />
-                        <button>Connect</button>
+                        <input v-on:keyup.enter="connectToIp()" id="browser-direct-input" type="text" placeholder="Enter an address [IP:Port]" v-model="directIp"/>
+                        <button v-on:click="connectToIp()">Connect</button>
                         <input type="text" placeholder="Search for a server" v-model="search" />
                     </div>
                     <table id="server-list">
