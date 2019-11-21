@@ -2,6 +2,11 @@ body {
     padding: 20px;
 }
 
+#browser-wrapper {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 #browser-head {
   background-color: rgba(39, 40, 74, 0.8);
   border-radius: 10px 10px 0 0;
