@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>MTASA:SA Web server browser</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id="app">
+            <div id="browser-wrapper">
+                <div id="browser-head">
+                    SERVER BROWSER
+                </div>
+                <div id="browser-body">
+                    <div id="browser-tools">
+                        <input disabled id="browser-direct-input" type="text" placeholder="Enter an address [IP:Port]" />
+                        <button>Connect</button>
+                        <input type="text" placeholder="Search for a server" v-model="search" />
+                    </div>
+                    <table id="server-list">
+                        <thead id="server-list-head">
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Players</th>
+                                <th>IP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="server in filteredServers"  v-on:dblclick="openServer(server)">
+                                <td>{{ server.version }}</td>
+                                <td>{{ server.name }}</td>
+                                <td>{{ server.players }}/{{ server.maxplayers }}</td>
+                                <td>{{ server.ip }}:{{ server.port }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios@0.16.2/dist/axios.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
