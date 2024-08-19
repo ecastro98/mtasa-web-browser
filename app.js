@@ -2,6 +2,12 @@ function isValidIpv4Addr(ip) {
     return /^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/.test(ip);
 }
 
+function decodeUTF8(str) {
+    return new TextDecoder('utf-8').decode(new Uint8Array(str.split('').map(function(c) {
+        return c.charCodeAt(0);
+    })));
+}
+
 new Vue({
     el: '#app',
     data: {
@@ -23,6 +29,7 @@ new Vue({
             .get('https://mtasa.com/api/')
             .then(({ data: servers }) => {
                 const orderedServersByPlayers = servers.sort((a, b) => a.players > b.players ? -1 : 1);
+                orderedServersByPlayers.forEach(server => { server.name = decodeUTF8(server.name); });
                 this.servers = orderedServersByPlayers;
             });
     },
